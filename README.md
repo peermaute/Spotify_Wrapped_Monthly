@@ -1,5 +1,5 @@
 # Spotify Wrapped Monthly
-Spotify Wrapped Monthly is a Python script to create a playlist with your top 50 tracks of the last month utilizing the Spotify Web API.
+Spotify Wrapped Monthly is a Python script to create a playlist with your top 25 tracks of the last month utilizing the Spotify Web API.
 
 ## How to use this script
 1. Use your Spotify account to login and activate the developers features of your account [here](https://developer.spotify.com/dashboard/login). 

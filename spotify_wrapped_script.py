@@ -10,8 +10,8 @@ def get_access_token():
     r = requests.post(url, headers=headers, data=payload)
     return r.json().get('access_token')
 
-def get_my_top_50_tracks(access_token):
-    url = 'https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=50'
+def get_my_top_25_tracks(access_token):
+    url = 'https://api.spotify.com/v1/me/top/tracks?time_range=short_term&limit=25'
     headers = {'Authorization': 'Bearer ' + access_token}
     r = requests.get(url, headers=headers)
     body_json = r.json()
@@ -20,7 +20,7 @@ def get_my_top_50_tracks(access_token):
         track_id_list.append(track['id'])
     return track_id_list
 
-def create_top_50_playlist(track_id_list, playlist_name, access_token):
+def create_top_25_playlist(track_id_list, playlist_name, access_token):
     headers = {'Authorization': 'Bearer ' + access_token}
 
     create_playlist_url = 'https://api.spotify.com/v1/users/' + os.environ.get('SPOTIFY_USER_ID') + '/playlists'
@@ -48,8 +48,8 @@ def getCurrentYear():
     return today.year
 
 def getPlaylistName():
-    return "Peer's Top 50 " + getCurrentMonth() + " " + str(getCurrentYear())
+    return "Peer's Top 25 - " + getCurrentMonth() + " " + str(getCurrentYear())
 
 #calling the magic
 access_token = get_access_token()
-create_top_50_playlist(get_my_top_50_tracks(access_token), getPlaylistName(), access_token)
+create_top_25_playlist(get_my_top_25_tracks(access_token), getPlaylistName(), access_token)
